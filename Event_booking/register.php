@@ -30,7 +30,7 @@
     }
     .register-container {
       max-width: 500px;
-      margin: 60px auto;
+      margin: 1rem auto;
       padding: 30px;
       background-color: white;
       border-radius: 15px;
