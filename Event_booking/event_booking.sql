@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2025 at 07:50 AM
+-- Generation Time: Jun 18, 2025 at 11:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,6 +44,35 @@ INSERT INTO `city` (`id`, `name`, `state`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `address` text NOT NULL,
+  `event_date` date NOT NULL,
+  `total_seats` int(11) NOT NULL,
+  `available_seats` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `status` enum('active','inactive') DEFAULT 'active',
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `title`, `description`, `city`, `address`, `event_date`, `total_seats`, `available_seats`, `price`, `category`, `status`, `image`, `created_at`) VALUES
+(1, 'Arijit Singh concert ', 'Experience the soulful voice of Arijit Singh live in concert! Join us for an unforgettable night of music, emotion, and entertainment.', 'Rajkot', '8Q4R+F2P, Race Course Rd, Race Course, Sadar, Rajkot, Gujarat 360001', '2025-06-25', 5000, 4500, 2000.00, 'Music', 'active', 'uploads/1750237429_con.jpg', '2025-06-18 09:03:49');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_data`
 --
 
@@ -61,7 +90,8 @@ CREATE TABLE `user_data` (
 --
 
 INSERT INTO `user_data` (`id`, `name`, `email`, `number`, `password`, `city`) VALUES
-(1, 'bhagirath khuman', 'khumanbhagirath883@gmail.com', '8780441298', '123', 'Rajkot');
+(1, 'bhagirath khuman', 'khumanbhagirath883@gmail.com', '8780441298', '123', 'Rajkot'),
+(2, 'anirudhh khuman', 'aniruddh78@gmail.com', '6354899514', '789', 'Surat');
 
 --
 -- Indexes for dumped tables
@@ -71,6 +101,12 @@ INSERT INTO `user_data` (`id`, `name`, `email`, `number`, `password`, `city`) VA
 -- Indexes for table `city`
 --
 ALTER TABLE `city`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -90,10 +126,16 @@ ALTER TABLE `city`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `user_data`
 --
 ALTER TABLE `user_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

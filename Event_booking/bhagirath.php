@@ -1,3 +1,17 @@
+<?php
+session_start();
+  if(isset($_POST["submit"]))
+  {
+    if($_POST["email"]=="bhagirath" && $_POST["password"]=="123")
+    {
+      $_SESSION['email']=$_POST["email"];
+      header("location:admin/index.php");
+    }
+    else{
+      echo "<script>alert('username or password is iccored')</script>";
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +46,8 @@
     <h3 class="text-center text-primary mb-4">Admin Login</h3>
     <form action="" method="POST">
       <div class="mb-3">
-        <label for="email" class="form-label text-primary">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required autocomplete="off">
+        <label for="email" class="form-label text-primary">Username</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" required autocomplete="off">
       </div>
       <div class="mb-3">
         <label for="password" class="form-label text-primary">Password</label>
